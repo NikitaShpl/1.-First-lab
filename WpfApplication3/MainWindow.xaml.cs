@@ -22,7 +22,7 @@ namespace WpfApplication3
     {
         public MainWindow()
         {
-            InitializeComponent();
+            
         }
     }
 }
