@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfApplication3.Properties
+namespace lr1.Properties
 {
 
 

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApplication3
+namespace lr1
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -22,7 +22,7 @@ namespace WpfApplication3
     {
         public MainWindow()
         {
-            
+            InitializeComponent();
         }
     }
 }

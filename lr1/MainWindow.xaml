@@ -1,0 +1,315 @@
+﻿<Window x:Class="lr1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lr1"
+        mc:Ignorable="d"
+        Title="Regestration" Height="380" Width="454">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:MainWindowViewModel></local:MainWindowViewModel>
+    </Window.DataContext>
+
+    <Grid ShowGridLines="False">
+
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="70" ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource BackBrush}"></Grid>
+
+        <Grid Grid.Row ="1" Name="First">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="TextSurname"
+                 FontSize="14"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                 BorderBrush="Black"
+                 Grid.Column="1"
+                 TabIndex="1" Margin="0,6,10,6"
+                 Text="{Binding Surname}"
+                 Style="{StaticResource TB}"
+                 />
+
+        </Grid>
+
+        <Grid Grid.Row ="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="TextName" Grid.Row="2"
+                 FontSize="14"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                 BorderBrush="Black"
+                 Grid.Column="1"
+                 TabIndex="2" Margin="0,6,10,6"
+                     Text="{Binding Name}"
+                     Style="{StaticResource TB}"
+                 >
+            </TextBox>
+
+        </Grid>
+
+        <Grid Grid.Row ="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="TextPatronymic" Grid.Row="3"
+                 FontSize="14"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                 BorderBrush="Black"
+                 Grid.Column="1"
+                 TabIndex="3" Margin="0,6,10,6"
+                     Text="{Binding Patronymic}"
+                     Style="{StaticResource PatronymicStyle}"
+                 />
+
+        </Grid >
+
+        <Grid Grid.Row ="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Name="Address"
+               Grid.Row="3" Grid.Column="0"
+               Content="Адрес"
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               FontSize="18" 
+            >
+
+            </Label>
+
+            <Label Target="{Binding ElementName= CityPick}"
+               Name="City"
+               Grid.Row="4" Grid.Column="1"
+               Content="Город"
+               VerticalAlignment="Center" HorizontalAlignment="Right"
+               FontSize="12" Height="26" 
+            />
+
+            <ComboBox Name="CityPick"
+            Grid.Column="2"
+            Grid.Row="4"
+            IsEditable="True"
+            FontSize="12"
+            VerticalAlignment="Center" HorizontalAlignment="Stretch"
+            TabIndex="4" Margin="0,6,10,6"
+                      ItemsSource="{Binding Cities, UpdateSourceTrigger=PropertyChanged}" 
+                      DisplayMemberPath="Name"  SelectedItem="{Binding SelectedCity}"
+            >
+            </ComboBox>
+
+        </Grid>
+
+        <Grid Grid.Row ="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Target="{Binding ElementName= StreetPick}"
+               Name="Street"
+               Grid.Row="5" Grid.Column="0"
+               Content="Улица"
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               FontSize="12" 
+            >
+            </Label>
+
+            <ComboBox Name="StreetPick"
+            Grid.Column="1"
+            IsEditable="True"
+            FontSize="12"
+            VerticalAlignment="Center" HorizontalAlignment="Stretch"
+            BorderBrush="Black"
+            TabIndex="4" Margin="0,9,10,3"
+                      ItemsSource="{Binding Streets}" 
+                      DisplayMemberPath="Name" SelectedItem="{Binding SelectedStreet}"
+            />
+
+        </Grid>
+
+        <Grid Grid.Row ="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="105*"></ColumnDefinition>
+                <ColumnDefinition Width="95*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="70*"></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+
+            <Label Name="Building"
+               Grid.Row="6" Grid.Column="0"
+               Content="Дом"
+               VerticalAlignment="Center" HorizontalAlignment="Right"
+               FontSize="12" 
+            >
+
+            </Label>
+
+            <TextBox Name="HousingNumber"
+                 Grid.Column="1"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Center"              
+                 BorderBrush="Black"
+                 MaxLength="5"
+                 FontSize="12" 
+                 Width="52"
+                 Margin="0,5" 
+                     Text="{Binding House}"
+                     Style="{StaticResource TBIntStyle}"
+                 />
+
+            <Label Name="Housing"
+               Grid.Column="2"
+               Content="корп./стр."
+               VerticalAlignment="Center"
+               HorizontalAlignment="Right"
+               FontSize="12"
+            />
+
+            <TextBox Name="BuildingNumber"
+                     Grid.Column=" 3"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     BorderBrush="Black"
+                     MaxLength="3"
+                     FontSize="12"
+                     Width="52"
+                     Margin="5,10,18,7"
+                     Text="{Binding Building}"
+                     Style="{StaticResource TBIntStyle}"
+                 
+                 />
+
+            <Label Name="Flat" 
+               Content="кв." 
+               Grid.Column="4"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Center"
+               FontSize="12" 
+               />
+
+
+            <TextBox Name="TextFlat" 
+               Grid.Column="5"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Left"
+               BorderBrush="Black"
+               FontSize="12" 
+               Margin="5,5"
+               Width="52"
+               MaxLength="5" 
+                     Text="{Binding Flat}"
+                     Style="{StaticResource TBIntStyle}"
+               />
+
+
+        </Grid>
+
+        <Grid Grid.Row ="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="Save" 
+                    Grid.Row="7" 
+                    Grid.Column="0"
+                    Content="Сохранить"
+                    FontSize="14"
+                    Width="90"
+                    Height="30"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center" Margin="53,20"
+                    Command="{Binding Confirm}"  CommandParameter="{Binding}"
+                    Style="{StaticResource ButtonStyle}" 
+            />
+
+            <!--<Grid Grid.Row="7" Grid.Column="0" Background="{StaticResource SaveBrush}" ></Grid>
+            <Grid Grid.Row="7" Grid.Column="1" Background="{StaticResource ResetBrush}" ></Grid>-->
+
+
+            <Button Name="Cancel" 
+                Grid.Column="1" 
+                Grid.Row="7"
+                Grid.ColumnSpan="2"
+                Content="Отмена" 
+                FontSize="14" 
+                Width="90"
+                Height="30"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center" Margin="53,20"
+                Command="{Binding Reset}" CommandParameter="{Binding}"
+                Style="{StaticResource ButtonStyle}"
+
+                
+                />
+
+        </Grid>
+
+        <Label Name="Regestration" 
+               Grid.Row="0" 
+               Grid.Column="0"
+            Content="Регистрация"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="40"
+            FontStyle="Normal"
+            FontWeight="Medium" 
+            />
+
+        <Label Target="{Binding ElementName=TextSurname}"
+               Grid.Row="1" Grid.Column="0"
+               Content="Фамилия"
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               FontSize="12" 
+            />
+
+        <Label Target="{Binding ElementName=TextName}"
+               Grid.Row="2" Grid.Column="0"
+               Content="Имя"
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               FontSize="12" 
+            >
+
+        </Label>
+
+        <Label Target="{Binding ElementName=TextPatronymic}" 
+               Grid.Row="3" Grid.Column="0"
+               Content="Отчество"
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               FontSize="12" 
+            >
+
+        </Label>
+    </Grid>
+</Window>
